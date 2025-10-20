@@ -1,8 +1,9 @@
-DROP TABLE IF EXISTS workout_exercice;
-DROP TABLE IF EXISTS workout;
-DROP TABLE IF EXISTS exercice;
-DROP TABLE IF EXISTS userapp;
-DROP TABLE IF EXISTS training_session;
+DROP TABLE IF EXISTS workout_exercice CASCADE;
+DROP TABLE IF EXISTS workout CASCADE;
+DROP TABLE IF EXISTS exercice CASCADE;
+DROP TABLE IF EXISTS userapp CASCADE;
+DROP TABLE IF EXISTS training CASCADE;
+DROP TABLE IF EXISTS training_session CASCADE;
 
 CREATE TABLE IF NOT EXISTS userapp(
     id INT PRIMARY KEY,
@@ -34,14 +35,21 @@ CREATE TABLE IF NOT EXISTS workout_exercice(
     FOREIGN KEY (exercice_id) REFERENCES exercice(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS training_session(
+CREATE TABLE IF NOT EXISTS training(
     id INT PRIMARY KEY,
     workout_id INT NOT NULL,
     user_id INT NOT NULL,
     session_date DATE NOT NULL,
-    reps INT NOT NULL,
-    sets INT NOT NULL,
-    weight FLOAT NOT NULL,
     FOREIGN KEY (workout_id) REFERENCES workout(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES userApp(id) ON DELETE CASCADE
-)
+);
+
+CREATE TABLE IF NOT EXISTS training_session(
+    id INT PRIMARY KEY,
+    exercice_id INT NOT NULL,
+    training_id INT NOT NULL,
+    reps INT NOT NULL,
+    weight FLOAT NOT NULL,
+    FOREIGN KEY (exercice_id) REFERENCES exercice(id) ON DELETE CASCADE,
+    FOREIGN KEY (training_id) REFERENCES training(id) ON DELETE CASCADE
+);

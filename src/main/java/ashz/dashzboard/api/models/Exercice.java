@@ -1,6 +1,7 @@
 package ashz.dashzboard.api.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,11 +9,15 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Entity representing an Exercice.
+ */
 @Entity
 @Table(name = "exercice", schema = "data")
 public class Exercice {
     @Setter
     @Getter
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -30,4 +35,8 @@ public class Exercice {
     @JsonBackReference
     @ManyToMany(mappedBy = "exercices")
     private Set<Workout> workouts = new HashSet<>();
+
+    @OneToMany
+    @JsonIgnore
+    private Set<TrainingSession> trainingSessions = new HashSet<>();
 }

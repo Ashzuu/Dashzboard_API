@@ -1,9 +1,7 @@
 package ashz.dashzboard.api.services;
 
 import ashz.dashzboard.api.models.Workout;
-import ashz.dashzboard.api.repository.IWorkoutRepository;
-import org.hibernate.annotations.processing.Find;
-import org.hibernate.service.spi.InjectService;
+import ashz.dashzboard.api.repository.WorkoutRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,13 +9,13 @@ import java.util.Optional;
 
 @Service
 public class WorkoutService  {
-    private final IWorkoutRepository repo;
+    private final WorkoutRepository repo;
 
     /**
      * Constructor for WorkoutService
      * @param repository the WorkoutRepository to be used
      */
-    public WorkoutService(IWorkoutRepository repository) {
+    public WorkoutService(WorkoutRepository repository) {
         this.repo = repository;
     }
 

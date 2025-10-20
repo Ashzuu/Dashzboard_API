@@ -6,8 +6,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Repository interface for Workout entity, implements CRUD operations.
+ */
 @Repository
-public interface IWorkoutRepository extends CrudRepository<Workout, Integer> {
+public interface WorkoutRepository extends CrudRepository<Workout, Integer> {
 
     List<Workout> findByUserId(Integer userId);
 }

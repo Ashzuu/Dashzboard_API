@@ -10,15 +10,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Controller for managing workouts.
+ */
 @RestController
 @RequestMapping("/workout")
 public class WorkoutController {
     private final WorkoutService service;
 
+    /**
+     * Constructor of WorkoutController
+     * @param service The workout service to be used (Injection)
+     */
     public WorkoutController(WorkoutService service) {
         this.service = service;
     }
 
+    /**
+     * Get all workouts
+     * @return An iterable of all workouts
+     */
     @GetMapping("/all")
     public Iterable<Workout> getAllMusculations(){
         return this.service.getAll();

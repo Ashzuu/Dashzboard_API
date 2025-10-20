@@ -4,7 +4,10 @@ import ashz.dashzboard.api.models.Exercice;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Repository interface for Exercice entity, implements CRUD operations.
+ */
 @Repository
-public interface IExerciceRepository extends CrudRepository<Exercice, Integer> {
+public interface ExerciceRepository extends CrudRepository<Exercice, Integer> {
 
 }

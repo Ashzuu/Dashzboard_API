@@ -1,5 +1,6 @@
 package ashz.dashzboard.api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -8,6 +9,9 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Entity representing a Workout, which is a collection of Exercices created by a User.
+ */
 @Entity
 @Table(name = "workout", schema = "data")
 public class Workout {
@@ -25,6 +29,7 @@ public class Workout {
     @Setter
     @Getter
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "user_id")
     private User user;
 
