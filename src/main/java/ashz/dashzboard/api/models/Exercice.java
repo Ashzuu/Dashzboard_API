@@ -1,58 +1,33 @@
 package ashz.dashzboard.api.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "exercice")
+@Table(name = "exercice", schema = "data")
 public class Exercice {
-
+    @Setter
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Setter
+    @Getter
     @Column(nullable = false)
     private String name;
 
+    @Setter
+    @Getter
     @Column(name = "muscular_group", nullable = false)
     private String muscularGroup;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    // Getters / setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMuscularGroup() {
-        return muscularGroup;
-    }
-
-    public void setMuscularGroup(String muscularGroup) {
-        this.muscularGroup = muscularGroup;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
+    @JsonBackReference
+    @ManyToMany(mappedBy = "exercices")
+    private Set<Workout> workouts = new HashSet<>();
 }

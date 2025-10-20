@@ -37,4 +37,8 @@ public class WorkoutService  {
     public Optional<Workout> getById(Integer id) {
         return this.repo.findById(id);
     }
+
+    public List<Workout> getWorkoutsByUserId(Integer userId){
+        return this.repo.findByUserId(userId);
+    }
 }

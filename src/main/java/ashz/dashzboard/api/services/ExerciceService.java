@@ -2,7 +2,6 @@ package ashz.dashzboard.api.services;
 
 import ashz.dashzboard.api.models.Exercice;
 import ashz.dashzboard.api.repository.IExerciceRepository;
-import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -21,5 +20,9 @@ public class ExerciceService {
 
     public Optional<Exercice> getById(int id){
         return this.repo.findById(id);
+    }
+
+    public void insert(Exercice exercice){
+        this.repo.save(exercice);
     }
 }
