@@ -32,7 +32,7 @@ public class WorkoutService  {
      * @param id the ID of the workout
      * @return an Optional containing the workout if found, or empty if not found
      */
-    public Optional<Workout> getById(Integer id) {
+    public Optional<Workout> getById(int id) {
         return this.repo.findById(id);
     }
 

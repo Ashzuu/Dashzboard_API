@@ -17,7 +17,6 @@ import java.util.Set;
 public class Exercice {
     @Setter
     @Getter
-    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

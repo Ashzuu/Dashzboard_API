@@ -2,13 +2,9 @@ package ashz.dashzboard.api.controllers;
 
 import ashz.dashzboard.api.models.Workout;
 import ashz.dashzboard.api.services.WorkoutService;
-import jakarta.websocket.server.PathParam;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 /**
  * Controller for managing workouts.
@@ -31,7 +27,12 @@ public class WorkoutController {
      * @return An iterable of all workouts
      */
     @GetMapping("/all")
-    public Iterable<Workout> getAllMusculations(){
+    public Iterable<Workout> getAllWorkout(){
         return this.service.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Workout> getWorkoutById(@PathVariable int id) {
+        return this.service.getById(id);
     }
 }

@@ -2,10 +2,7 @@ package ashz.dashzboard.api.controllers;
 
 import ashz.dashzboard.api.models.Training;
 import ashz.dashzboard.api.services.TrainingService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controller for managing trainings.
