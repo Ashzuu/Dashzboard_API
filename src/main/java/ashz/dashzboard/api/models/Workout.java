@@ -1,8 +1,8 @@
 package ashz.dashzboard.api.models;
 
+import ashz.dashzboard.api.models.dtos.request.RequestWorkoutDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,6 +45,11 @@ public class Workout {
     )
     private Set<Exercise> exercises = new HashSet<>();
 
+    public Workout(){}
+
     // Default constructor
-    public Workout() {}
+    public Workout(RequestWorkoutDTO dto) {
+        this.setName(dto.getName());
+        this.setUser(new User(dto.getUser()));
+    }
 }

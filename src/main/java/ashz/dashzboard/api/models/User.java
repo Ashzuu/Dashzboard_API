@@ -1,6 +1,8 @@
 package ashz.dashzboard.api.models;
 
+import ashz.dashzboard.api.models.dtos.request.RequestUserDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +15,7 @@ import java.util.Set;
 @Setter
 @Getter
 @Entity
-@Table(name = "userapp", schema = "data")
+@Table(name = "user", schema = "data")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,10 +29,18 @@ public class User {
     private String email;
 
     @JsonIgnore
+    @Nullable
     @Column(name="password", nullable=false)
     private String password;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Set<Training> trainings;
+
+    public User() {}
+
+    public User(RequestUserDTO dto){
+        this.setUsername(dto.getUsername());
+        this.setEmail(dto.getEmail());
+    }
 }
