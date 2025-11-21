@@ -39,4 +39,8 @@ public class WorkoutService  {
     public List<Workout> getWorkoutsByUserId(Integer userId){
         return this.repo.findByUserId(userId);
     }
+
+    public Workout create(Workout workout){
+        return this.repo.save(workout);
+    }
 }

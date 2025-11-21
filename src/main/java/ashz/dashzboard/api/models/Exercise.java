@@ -10,11 +10,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Entity representing an Exercice.
+ * Entity representing an Exercise.
  */
 @Entity
-@Table(name = "exercice", schema = "data")
-public class Exercice {
+@Table(name = "exercise", schema = "data")
+public class Exercise {
     @Setter
     @Getter
     @Id
@@ -32,7 +32,7 @@ public class Exercice {
     private String muscularGroup;
 
     @JsonBackReference
-    @ManyToMany(mappedBy = "exercices")
+    @ManyToMany(mappedBy = "exercises")
     private Set<Workout> workouts = new HashSet<>();
 
     @OneToMany

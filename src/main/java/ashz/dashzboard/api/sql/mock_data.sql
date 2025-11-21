@@ -2,7 +2,7 @@
 
 DELETE FROM workout_exercice WHERE exercice_id>=0;
 DELETE FROM workout WHERE id>=0;
-DELETE FROM exercice WHERE id>=0;
+DELETE FROM exercise WHERE id>=0;
 DELETE FROM userapp WHERE id>=0;
 
 INSERT INTO userapp (id, username, email, password) VALUES
@@ -11,7 +11,7 @@ INSERT INTO userapp (id, username, email, password) VALUES
 (3, 'alice_smith', 'alice@example.com', 'alicePass'),
 (4, 'bob_lee', 'bob@example.com', 'bobPass');
 
-INSERT INTO exercice (id, name, muscular_group, user_id) VALUES
+INSERT INTO exercise (id, name, muscular_group, user_id) VALUES
 (1, 'Push-Up', 'Chest', 1),
 (2, 'Squat', 'Legs', 2),
 (3, 'Pull-Up', 'Back', 1),
@@ -40,7 +40,7 @@ INSERT INTO workout (id, name, user_id) VALUES
 (4, 'Upper Body Strength', 1),
 (5, 'Core Focus', 2);
 
-INSERT INTO workout_exercice (workout_id, exercice_id) VALUES
+INSERT INTO workout_exercise (workout_id, exercice_id) VALUES
 (1, 1),
 (1, 2),
 (1, 10),

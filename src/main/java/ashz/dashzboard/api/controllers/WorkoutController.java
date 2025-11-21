@@ -35,4 +35,9 @@ public class WorkoutController {
     public Optional<Workout> getWorkoutById(@PathVariable int id) {
         return this.service.getById(id);
     }
+
+    @PostMapping("/new")
+    public Workout createWorkout(@RequestBody Workout workout){
+        return this.service.create(workout);
+    }
 }

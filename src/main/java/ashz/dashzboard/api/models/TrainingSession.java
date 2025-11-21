@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Entity representing a Training session (An exercice in the context of a training).
+ * Entity representing a Training session (An exercise in the context of a training).
  */
 @Entity
 @Table(name = "training_session", schema = "data")
@@ -28,5 +28,5 @@ public class TrainingSession {
     private Training training;
 
     @ManyToOne
-    private Exercice exercice;
+    private Exercise exercise;
 }

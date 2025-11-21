@@ -2,6 +2,7 @@ package ashz.dashzboard.api.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Entity representing a Workout, which is a collection of Exercices created by a User.
+ * Entity representing a Workout, which is a collection of Exercises created by a User.
  */
 @Entity
 @Table(name = "workout", schema = "data")
@@ -37,12 +38,12 @@ public class Workout {
     @JsonManagedReference
     @ManyToMany
     @JoinTable(
-        name = "workout_exercice",
+        name = "workout_exercise",
         schema = "data",
         joinColumns = @JoinColumn(name = "workout_id"),
-        inverseJoinColumns = @JoinColumn(name = "exercice_id")
+        inverseJoinColumns = @JoinColumn(name = "exercise_id")
     )
-    private Set<Exercice> exercices = new HashSet<>();
+    private Set<Exercise> exercises = new HashSet<>();
 
     // Default constructor
     public Workout() {}

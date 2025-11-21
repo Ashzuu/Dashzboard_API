@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS userapp(
     password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS exercice(
+CREATE TABLE IF NOT EXISTS exercise(
     id INT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     muscular_group VARCHAR(100) NOT NULL,
