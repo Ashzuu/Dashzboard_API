@@ -1,0 +1,55 @@
+package ashz.musculashzboard.api.models;
+
+import ashz.musculashzboard.api.models.dtos.request.RequestWorkoutDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * Entity representing a Workout, which is a collection of Exercises created by a User.
+ */
+@Entity
+@Table(name = "workout", schema = "data")
+public class Workout {
+    @Setter
+    @Getter
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Setter
+    @Getter
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Setter
+    @Getter
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    // Relationship accessors
+    @JsonManagedReference
+    @ManyToMany
+    @JoinTable(
+        name = "workout_exercise",
+        schema = "data",
+        joinColumns = @JoinColumn(name = "workout_id"),
+        inverseJoinColumns = @JoinColumn(name = "exercise_id")
+    )
+    private Set<Exercise> exercises = new HashSet<>();
+
+    public Workout(){}
+
+    // Default constructor
+    public Workout(RequestWorkoutDTO dto) {
+        this.setName(dto.getName());
+        this.setUser(dto.getUser());
+    }
+}
